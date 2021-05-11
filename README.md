@@ -6,12 +6,15 @@ Uses SQLite only. Fedora and Solr run in Jetty with fcrepo_wrapper and solr_wrap
 
 ```
 vagrant up
+vagrant ssh
+
 cd /home/vagrant/cuirator
 
 # Start fcrepo_wrapper
 fcrepo_wrapper --port 8984
 
-# Start solr_wrapper. Solr 8.0.x releases are not supported. See https://github.com/samvera/hyrax/wiki/Hyrax-Development-Guide
+# Start solr_wrapper
+# Solr 8.0.x releases are not supported. See https://github.com/samvera/hyrax/wiki/Hyrax-Development-Guide
 solr_wrapper --port 8983 --version 7.7.3
 
 # Start puma
