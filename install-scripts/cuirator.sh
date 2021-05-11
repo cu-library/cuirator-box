@@ -36,5 +36,6 @@ fi
 # Install gems
 bundle install
 
-# needed to run db:migrate before app would load -- ok
-# ran assets:precompile before starting servers again -- also ok
+# Rake tasks: migrate & precompile
+rake db:migrate
+rake db:precompile
