@@ -20,6 +20,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "./install-scripts/ruby.sh"
   config.vm.provision "shell", path: "./install-scripts/fits.sh"
   # @todo install ffmpeg
-  config.vm.provision "shell", path: "./install-scripts/cuirator.sh"
-  config.vm.provision "shell", path: "./install-scripts/bundle.sh", privileged: false 
+  config.vm.provision "shell", path: "./install-scripts/cuirator.sh", privileged: false
 end
