@@ -38,4 +38,4 @@ bundle install
 
 # Rake tasks: migrate & precompile
 rake db:migrate
-rake db:precompile
+rake assets:precompile
