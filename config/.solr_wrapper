@@ -1,0 +1,10 @@
+# .solr_wrapper default config
+# override with solr_wrapper --config
+version: <%= ENV['SOLR_VERSION'] || '7.7.3' %>
+port: <%= ENV['SOLR_PORT'] || '8984' %>
+instance_dir: tmp/solr-development
+collection:
+    persist: true
+    dir: solr/conf
+    name: <%= ENV['SOLR_COLLECTION_NAME'] || 'hydra-default' %>
+    

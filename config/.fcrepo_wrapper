@@ -1,0 +1,5 @@
+# fcrepo_wrapper default config
+# override with fcrepo_wrapper --config 
+port: <%= ENV['FCREPO_PORT'] || '8984' %>
+enable_jms: false
+fcrepo_home_dir: tmp/fcrepo4-development-data

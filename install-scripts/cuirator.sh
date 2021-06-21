@@ -1,11 +1,35 @@
 # Check out Cuirator repository, bundle config and install
 # Run this script as non-privileged user
 
-# @todo just make this vagrant $HOME but confirm user
-INSTALL_DIR="/home/vagrant"
+# Script args
+SHARED_DIR=$1
+
+# Config files
+CONFIG_DIR="$SHARED_DIR/config"
+DOT_ENV=".env"
+DOT_PROFILE=".bash_profile"
+DOT_SOLR_WRAPPER=".solr_wrapper"
+DOT_FCREPO_WRAPPER=".fcrepo_wrapper"
+
+# Cuirator install locations & source
+INSTALL_DIR=$HOME
 CUIRATOR_DIR="cuirator"
 CUIRATOR_INSTALL_DIR="$INSTALL_DIR/$CUIRATOR_DIR"
 CUIRATOR_URL="https://github.com/cu-library/cuirator.git"
+
+# Create ~/.env
+if [ -e $HOME/$DOT_ENV ]; then
+    echo $HOME/$DOT_ENV already exists
+else
+    cp $CONFIG_DIR/$DOT_ENV $HOME/$DOT_ENV
+fi
+
+# Add .env to bash profile & export vars
+if grep "source \$HOME/$DOT_ENV" $HOME/$DOT_PROFILE > /dev/null ; then
+    echo Environment vars already added to $HOME/$DOT_PROFILE
+else
+    echo "set -o allexport; source \$HOME/$DOT_ENV; set +o allexport" >> $HOME/$DOT_PROFILE
+fi
 
 # Check out repository
 if [ -e $CUIRATOR_INSTALL_DIR ]; then
@@ -13,6 +37,20 @@ if [ -e $CUIRATOR_INSTALL_DIR ]; then
 else
     cd $INSTALL_DIR
     git clone $CUIRATOR_URL
+fi
+
+# Create ~/cuirator/.solr_wrapper
+if [ -e $CUIRATOR_INSTALL_DIR/$DOT_SOLR_WRAPPER ]; then
+    echo $CUIRATOR_INSTALL_DIR/$DOT_SOLR_WRAPPER already exists
+else
+    cp $CONFIG_DIR/$DOT_SOLR_WRAPPER $CUIRATOR_INSTALL_DIR/$DOT_SOLR_WRAPPER
+fi
+
+# Create ~/cuirator/.fcrepo_wrapper
+if [ -e $CUIRATOR_INSTALL_DIR/$DOT_FCREPO_WRAPPER ]; then
+    echo $CUIRATOR_INSTALL_DIR/$DOT_FCREPO_WRAPPER already exists
+else
+    cp $CONFIG_DIR/$DOT_FCREPO_WRAPPER $CUIRATOR_INSTALL_DIR/$DOT_FCREPO_WRAPPER
 fi
 
 # Update Bundler

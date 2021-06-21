@@ -16,9 +16,11 @@ Vagrant.configure("2") do |config|
       v.cpus = 2
   end
 
+  shared_dir = "/vagrant"
+
   config.vm.provision "shell", path: "./install-scripts/bootstrap.sh"
   config.vm.provision "shell", path: "./install-scripts/ruby.sh"
   config.vm.provision "shell", path: "./install-scripts/fits.sh"
   # @todo install ffmpeg
-  config.vm.provision "shell", path: "./install-scripts/cuirator.sh", privileged: false
+  config.vm.provision "shell", path: "./install-scripts/cuirator.sh", args: shared_dir, privileged: false
 end
