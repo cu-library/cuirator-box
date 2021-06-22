@@ -6,7 +6,7 @@ Bash for readability by student contributors.
 
 Uses SQLite only. Fedora and Solr run in Jetty with fcrepo_wrapper and solr_wrapper.
 
-Edit env vars in `config`, then
+Edit env vars in `config` then
 
 ```
 vagrant up
@@ -21,5 +21,34 @@ fcrepo_wrapper
 solr_wrapper
 
 # Start Puma web server
-rails server 
+rails server
+```
+
+Create default admin set
+
+```
+cd /home/vagrant/cuirator
+
+rails hyrax:default_admin_set:create
+```
+
+Start rails console
+
+```
+cd /home/vagrant/cuirator
+
+rails console
+```
+
+In the console, create admin role and user
+
+```
+admin_role = Role.create(name: 'admin')
+
+admin_user = User.create!(
+  :display_name=> 'User Name',
+  :email=>'username@domain',
+  :password=>'password')
+
+admin_role.users << admin_user
 ```
