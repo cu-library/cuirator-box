@@ -22,6 +22,9 @@ solr_wrapper
 
 # Start Puma web server
 rails server
+
+# Start Redis
+redis-server
 ```
 
 Create default admin set
