@@ -19,14 +19,22 @@ yum -y install make patch gcc gcc-c++ \
 yum -y install java-1.8.0-openjdk
 
 # SQLite
-# @todo do we need mysql-server mysql-client or can we run with SQLite
 yum -y install sqlite-devel
 
 # Imagemagick, LibreOffice for processing
 yum -y install ImageMagick libreoffice
 
-# Nodejs from EPEL
-yum -y install nodejs
-
 # Redis
 yum -y install redis
+
+# Universal Viewer requires recent version of Node.js
+# Install Nodesource repo
+if yum repolist | grep nodesource > /dev/null ; then
+  echo Nodesource repo already exists
+else
+  curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
+fi
+
+# Install node and yarn
+yum install -y nodejs
+npm install -g yarn

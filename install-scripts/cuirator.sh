@@ -74,6 +74,9 @@ fi
 # Install gems
 bundle install
 
-# Rake tasks: migrate & precompile
-rake db:migrate
-rake assets:precompile
+# Install Universal Viewer
+yarn install
+
+# Rails tasks: migrate & precompile
+rails db:migrate
+rails assets:precompile
