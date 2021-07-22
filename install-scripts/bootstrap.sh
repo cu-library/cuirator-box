@@ -38,3 +38,6 @@ fi
 # Install node and yarn
 yum install -y nodejs
 npm install -g yarn
+
+# Stop firewalld
+systemctl stop firewalld.service
