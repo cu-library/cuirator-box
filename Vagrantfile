@@ -16,7 +16,8 @@ Vagrant.configure("2") do |config|
       v.cpus = 2
   end
 
-  shared_dir = "/vagrant"
+  shared_dir = "/vagrant/cuirator-box/config"
+  config.vm.synced_folder "config", shared_dir
 
   config.vm.provision "shell", path: "./install-scripts/bootstrap.sh"
   config.vm.provision "shell", path: "./install-scripts/ruby.sh"

@@ -5,7 +5,7 @@
 SHARED_DIR=$1
 
 # Config files
-CONFIG_DIR="$SHARED_DIR/config"
+CONFIG_DIR=$SHARED_DIR
 DOT_ENV=".env"
 DOT_PROFILE=".bash_profile"
 DOT_SOLR_WRAPPER=".solr_wrapper"
