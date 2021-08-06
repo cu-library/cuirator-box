@@ -10,7 +10,6 @@ DOT_ENV=".env"
 DOT_PROFILE=".bash_profile"
 DOT_SOLR_WRAPPER=".solr_wrapper"
 DOT_FCREPO_WRAPPER=".fcrepo_wrapper"
-DEVELOPMENT_CONFIG="development.rb"
 
 # Cuirator install locations & source
 INSTALL_DIR=$HOME
@@ -54,8 +53,10 @@ else
     cp $CONFIG_DIR/$DOT_FCREPO_WRAPPER $CUIRATOR_INSTALL_DIR/$DOT_FCREPO_WRAPPER
 fi
 
-# Copy config for development environment
-cp $CONFIG_DIR/$DEVELOPMENT_CONFIG "$CUIRATOR_INSTALL_DIR/config/environments"
+# Copy config files for development environment
+cp "$CONFIG_DIR/development.rb" "$CUIRATOR_INSTALL_DIR/config/environments/"
+# @todo db config is for PostgreSQL, make this optional & default to SQLite
+cp "$CONFIG_DIR/database.yml"  "$CUIRATOR_INSTALL_DIR/config/"
 
 # Update Bundler
 # @todo check version in Gemfile.lock before running update

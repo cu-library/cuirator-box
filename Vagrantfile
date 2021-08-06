@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 8984, host: 8984 # Fedora
 
   config.vm.provider "virtualbox" do |v|
-      v.memory = 2048
+      v.memory = 4096
       v.cpus = 2
   end
 
@@ -20,6 +20,8 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "config", shared_dir
 
   config.vm.provision "shell", path: "./install-scripts/bootstrap.sh"
+  # @todo make this optional, SQLite is fine unless using Bulkrax
+  config.vm.provision "shell", path: "./install-scripts/postgresql.sh"
   config.vm.provision "shell", path: "./install-scripts/ruby.sh"
   config.vm.provision "shell", path: "./install-scripts/fits.sh"
   # @todo install ffmpeg
