@@ -24,6 +24,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "./install-scripts/postgresql.sh"
   config.vm.provision "shell", path: "./install-scripts/ruby.sh"
   config.vm.provision "shell", path: "./install-scripts/fits.sh"
-  # @todo install ffmpeg
   config.vm.provision "shell", path: "./install-scripts/cuirator.sh", args: shared_dir, privileged: false
 end

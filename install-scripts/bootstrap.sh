@@ -27,6 +27,10 @@ yum -y install ImageMagick libreoffice
 # Redis
 yum -y install redis
 
+## ffmpeg
+yum -y localinstall --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm
+yum -y install ffmpeg
+
 # Universal Viewer requires recent version of Node.js
 # Install Nodesource repo
 if yum repolist | grep nodesource > /dev/null ; then
