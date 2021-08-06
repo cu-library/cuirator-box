@@ -2,9 +2,9 @@
 
 Barebones CentOS 7 box for [Cuirator](https://github.com/cu-library/cuirator) development and testing.
 
-Bash for readability by student contributors.
+Uses PostgreSQL for development db and SQLite for test db. 
 
-Uses SQLite only. Fedora and Solr run in Jetty with fcrepo_wrapper and solr_wrapper.
+Fedora and Solr run in Jetty with fcrepo_wrapper and solr_wrapper.
 
 Edit env vars in `config` then
 
